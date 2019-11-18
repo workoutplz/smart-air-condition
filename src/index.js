@@ -2,12 +2,13 @@ const http = require('http');
 const url = require('url');
 const admin = require('firebase-admin');
 const serviceAccount = require('./smart-airconditioner-firebase-adminsdk-sfniy-9b695f818d.json');
-const db = admin.firestore();
-const docRef = db.collection('data').doc('sensor');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
 });
+
+const db = admin.firestore();
+const docRef = db.collection('data').doc('sensor');
 
 http.createServer(function(req, res) {
   let uri = req.url;
